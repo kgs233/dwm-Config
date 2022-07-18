@@ -6,3 +6,4 @@ cp -rf ./.dwm ~/
 cd dwm
 make
 sudo make install
+echo "exec dwm" >> ~/.xinitrc
