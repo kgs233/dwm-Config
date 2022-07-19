@@ -1,4 +1,5 @@
-# KGS-dwm-Config
+# dwm-Config
+This is an installation script for dwm and configuration files under Arch Linux, although it is also possible on other systems, but you need to install it manually
 ## Install
 ```bash
 chmod 777 install.sh
