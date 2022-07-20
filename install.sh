@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo pacman -S compton dmenu alacritty nigtroun alsa-utils bc nerd-fonts-fira
+sudo pacman -S dmenu alacritty nigtroun alsa-utils bc
+# sudo pacman -S picom-git nerd-fonts-fira
+yay -S picom-git otf-nerd-fonts-fira-mono
 cp -rf ./.config ~/
 cp -rf ./.dwm ~/
 cd dwm
