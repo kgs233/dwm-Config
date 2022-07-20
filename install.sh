@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -S compton dmenu alacritty
+sudo pacman -S compton dmenu alacritty nigtroun
 cp -rf ./.config ~/
 cp -rf ./.dwm ~/
 cd dwm
