@@ -2,6 +2,9 @@
 # Screenshot: http://s.natalian.org/2013-08-17/dwm_status.png
 # Network speed stuff stolen from http://linuxclues.blogspot.sg/2009/11/shell-script-show-network-speed.html
 
+LOCATION=""
+wher="$(curl -s wttr.in/$LOCATION?format=1 | sed 's/[[:space:]]//g' | sed 's/☀/& /')"
+
 # This function parses /proc/net/dev file searching for a line containing $interface data.
 # Within that line, the first and ninth numbers after ':' are respectively the received and transmited bytes.
 function get_bytes {
@@ -109,7 +112,7 @@ get_bytes
 vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
 vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-xsetroot -name " $weather 💿$(print_mem)M  $vel_recv  $vel_trans $(show_volume) 﨟 $(show_record)$(print_date) "
+xsetroot -name "$wher 💿$(print_mem)M  $vel_recv  $vel_trans $(show_volume) 﨟 $(show_record)$(print_date) "
 
 # Update old values to perform new calculations
 old_received_bytes=$received_bytes
