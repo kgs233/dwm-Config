@@ -1,8 +1,8 @@
 #!/bin/bash
 
-sudo pacman -S meson ninja uthash libconfig libev dmenu alacritty nigtroun alsa-utils bc
+sudo pacman -S meson ninja uthash libconfig libev alacritty nigtroun alsa-utils bc
 # sudo pacman -S nerd-fonts-fira
-yay -S picom-git otf-nerd-fonts-fira-mono
+yay -S dmenu2 otf-nerd-fonts-fira-mono
 git clone https://github.com/yaocccc/picom.git
 # git clone git@github.com:yaocccc/picom.git
 cd picom

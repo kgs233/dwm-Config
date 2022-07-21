@@ -939,7 +939,8 @@ focusstack(int inc, int hid)
 			for (c = selmon->sel->next;
 					c && (!ISVISIBLE(c) || (!hid && HIDDEN(c)));
 					c = c->next);
-		for (c = selmon->clients;
+		if (!c)
+			for (c = selmon->clients;
 				c && (!ISVISIBLE(c) || (!hid && HIDDEN(c)));
 				c = c->next);
 	} else {
@@ -957,6 +958,7 @@ focusstack(int inc, int hid)
 	if (c) {
 		focus(c);
 		restack(selmon);
+
 		if (HIDDEN(c)) {
 			showwin(c);
 			c->mon->hidsel = 1;
