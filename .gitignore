@@ -1,4 +1,5 @@
 b
 picom
+dmenu2
 dwm/*.o
 dwm/dwm
