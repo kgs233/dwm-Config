@@ -1,2 +1,4 @@
 b
 picom
+dwm/*.o
+dwm/dwm
