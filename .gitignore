@@ -5,3 +5,4 @@ dwm/*.o
 dwm/*.orig
 dwm/*.rej
 dwm/dwm
+dwm/*.diff
