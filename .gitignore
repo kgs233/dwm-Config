@@ -2,4 +2,6 @@ b
 picom
 dmenu2
 dwm/*.o
+dwm/*.orig
+dwm/*.rej
 dwm/dwm
