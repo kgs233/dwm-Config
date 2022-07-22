@@ -1978,10 +1978,13 @@ tile(Monitor *m)
 void
 togglebar(const Arg *arg)
 {
-	selmon->showbar = !selmon->showbar;
-	updatebarpos(selmon);
-	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx + sp, selmon->by + vp, selmon->ww - 2 * sp, bh);
-	arrange(selmon);
+	if(selmon->sel->isfullscreen == 0)
+	{
+		selmon->showbar = !selmon->showbar;
+		updatebarpos(selmon);
+		XMoveResizeWindow(dpy, selmon->barwin, selmon->wx + sp, selmon->by + vp, selmon->ww - 2 * sp, bh);
+		arrange(selmon);
+	}
 }
 
 void
@@ -2002,10 +2005,13 @@ void
 fullscreen(const Arg *arg)
 {
 	if (selmon->sel) {
-		if(selmon->sel->isfullscreen == 1)
-			togglebar(arg);
-		else if((selmon->sel->isfullscreen == 0) && selmon->showbar)
-			togglebar(arg);
+		if(selmon->sel->isfullscreen == 1 || (selmon->sel->isfullscreen == 0 && selmon->showbar))
+		{
+			selmon->showbar = !selmon->showbar;
+			updatebarpos(selmon);
+			XMoveResizeWindow(dpy, selmon->barwin, selmon->wx + sp, selmon->by + vp, selmon->ww - 2 * sp, bh);
+			arrange(selmon);
+		}
 		setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
 	}
 }
