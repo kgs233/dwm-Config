@@ -176,6 +176,7 @@ static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
 static void focusstackvis(const Arg *arg);
+static void focusstackhid(const Arg *arg);
 static void focusstack(int inc, int vis);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
@@ -225,7 +226,7 @@ static void tagmon(const Arg *arg);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
-static void fullscreen(const Arg *arg);
+static void togglefullscr(const Arg *arg);
 static void togglescratch(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
@@ -917,6 +918,12 @@ void
 focusstackvis(const Arg *arg)
 {
 	focusstack(arg->i, 0);
+}
+
+void
+focusstackhid(const Arg *arg)
+{
+	focusstack(arg->i, 1);
 }
 
 void
@@ -1999,18 +2006,6 @@ togglefloating(const Arg *arg)
 }
 
 void
-fullscreen(const Arg *arg)
-{
-	if (selmon->sel) {
-		if(selmon->sel->isfullscreen == 1)
-			togglebar(arg);
-		else if((selmon->sel->isfullscreen == 0) && selmon->showbar)
-			togglebar(arg);
-		setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
-	}
-}
-
-void
 togglescratch(const Arg *arg)
 {
 	Client *c;
@@ -2030,6 +2025,13 @@ togglescratch(const Arg *arg)
 		}
 	} else
 		spawn(arg);
+}
+
+void
+togglefullscr(const Arg *arg)
+{
+  if(selmon->sel)
+    setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
 }
 
 void
