@@ -1,19 +1,26 @@
 #!/bin/bash
 
 sudo pacman -S meson ninja uthash libconfig libev alacritty nitrogen alsa-utils bc
+
+# use archlinuxcn
 sudo pacman -S nerd-fonts-fira
 # yay -S dmenu2 otf-nerd-fonts-fira-mono
+
 git clone https://github.com/yaocccc/picom.git
+# use SSh
 # git clone git@github.com:yaocccc/picom.git
+
 cd picom
 git checkout implement-window-animations
 rm -rf build
 LDFLAGS="-L/usr/local/lib" CPPFLAGS="-I/usr/local/include" meson --buildtype=release . build
 ninja -C build
 sudo ninja -C build install
+
 cd ../
 cp -rf ./.config ~/
 cp -rf ./.dwm ~/
+
 cd dwm
 make
 sudo make install
